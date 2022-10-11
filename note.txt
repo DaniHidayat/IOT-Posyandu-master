@@ -1,0 +1,27 @@
+DB
+Suhu = Sensor PH
+Jarak = Kelembab-an/Moisture
+
+Tampilan 
+Page 
+1. Dashboard = Grafik 
+2. Admin(Fitur)
+   user : Tantram.id
+   pass : tantram.idjaya
+   a. Grafik
+   b. Tabel (Status 
+      PH(
+         Asam(>0&<6),
+         Netral(>6&<7),
+         Basa(>7)
+      )
+      MT(
+	 Basah(>0 & <=400)
+	 Normal(>400 & <=500), 
+ 	 Kering(>500),
+      ))
+   c. Report Bulanan
+
+Ket :    
+   Grafik Garis -> Data Sensor PH 
+   Grafik Batang -> Kelembab-an
