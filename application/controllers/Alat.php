@@ -1,7 +1,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
 
-    class Page extends CI_Controller {
+    class Alat extends CI_Controller {
         function __construct(){
             parent::__construct();
             // Models
@@ -13,14 +13,23 @@
                 redirect(base_url("Mainpage"));
             }
             // Setup
-            $this->load->view('Layout/V2/head');
+           
             // // $this->load->view('Layout/V2/navbar');
             // $this->load->view('Layout/V2/sidebar');
         }
         function beranda(){
-            $this->load->view('Page/v2/beranda');
-            $this->load->view('Layout/v2/footer');
+            $this->load->view('Page/v2/Alat/beranda');
+            $this->load->view('Layout/v2/Alat/footer');
         }
+
+    // ALAT
+
+    public function showAlat()
+    {
+        $data = array('data' => $this->M_Tani->tampil_data('tb_alat', 'id_alat', 'ASC')->result());
+         echo json_encode($data);
+       
+    }
         function tambahalat(){
             $this->load->view('Page/plusalat');
             $this->load->view('Layout/footer');
@@ -44,7 +53,7 @@
         function dataalat(){
             $data['tb_alat'] = $this->M_Tani->tampil_data('tb_alat','id_alat','ASC')->result();
             
-            $this->load->view('Page/V2/dataalat',$data);
+            $this->load->view('Page/V2/Alat/dataalat',$data);
             $this->load->view('Layout/V2/footer');
         }
         function editalat($id_alat){
@@ -75,6 +84,8 @@
             redirect('Page/dataalat');
             
         }
+
+        //End Alat
    
 
     }

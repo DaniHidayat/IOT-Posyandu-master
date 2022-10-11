@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php $this->load->view('Layout/V2/head') ?>
 
 
 <body id="page-top">
@@ -40,7 +40,7 @@
                             </div>
 
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table id="table_alat" class="table table-bordered" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>ID ALAT</th>
@@ -50,39 +50,8 @@
                                             <th>AKSI</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>ID ALAT</th>
-                                            <th>STATUS SENSOR ULTRASONIC</th>
-                                            <th>KODE ALAT</th>
-                                            <th>LOKASI</th>
-                                            <th>AKSI</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php
-                                        foreach ($tb_alat as $ta) {
-                                            if ($ta->suara == 0) {
-                                                $suara = "<span class='btn btn-danger btn-sm text-white'>Suara Sedang Mati</span>";
-                                            } else {
-                                                $suara = "<span class='btn btn-success btn-sm text-white'>Suara Sedang Nyala</span>";
-                                            }
-                                        ?>
-                                            <tr>
-                                                <td><?= $ta->id_alat ?></td>
-                                                <td><?= $suara ?></td>
-                                                <td><?= $ta->kode_alat ?></td>
-                                                <!-- <td><?= $ta->sandi_alat ?></td>   -->
-                                                <td><?= $ta->lokasi ?></td>
-                                                <td>
-                                                    <a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#ModalEdit<?php echo $ta->id_alat; ?>">
-                                                        Edit
-                                                    </a>
 
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
-                                    </tbody>
+
                                 </table>
                             </div>
                         </div>
@@ -178,7 +147,7 @@
                                         <div class="form-group">
                                             <label for="inputUserName" class="col-sm-4 control-label">Lokasi Alat</label>
                                             <div class="col-sm-12">
-                                                <input type="text" name="lokasi" class="form-control" id="inputUserName" value="<?php echo $ta->lokasi; ?>"  placeholder="Lokasi Alat" required>
+                                                <input type="text" name="lokasi" class="form-control" id="inputUserName" value="<?php echo $ta->lokasi; ?>" placeholder="Lokasi Alat" required>
                                             </div>
                                         </div>
 
@@ -193,5 +162,57 @@
                         </div>
                     </div>
                 </div>
-
             <?php endforeach; ?>
+            <script src="<?php echo base_url('../assets/sb2/'); ?>vendor/jquery/jquery.min.js"></script>
+            <script>
+                $(document).ready(function() {
+
+                    show();
+                });
+
+                function show() {
+
+                    var i = 1;
+                    $('#table_alat').DataTable({
+                        "order": [],
+                        "ajax": {
+                            url: "<?= base_url() ?>Alat/showAlat",
+                        },
+                        "columns": [
+
+                            {
+                                "data": 'id_alat'
+                            },
+                            {
+                                "data": null,
+                                "render": function(data, type, row, meta) {
+                                    switch (data.suara) {
+                                        case "0":
+                                            return `<span class='
+                                            btn btn-danger btn-sm text-white '>Suara Sedang Mati</span>`;
+                                            break;
+
+                                        default:
+                                            return  `<span class='
+                                            btn btn-success btn-sm text-white '>Suara Sedang Nyala</span>`;
+                                    }
+                                }
+                            },
+                            {
+                                "data": 'kode_alat'
+                            },
+                            {
+                                "data": 'lokasi'
+                            },
+                            {
+                                "data": null,
+                                "render": function(data, type, row, meta) {
+                                data = `<a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalEdit` + data.id_alat + `">Edit </a>`;
+                                    return data;
+                                }
+                            },
+
+                        ]
+                    });
+                }
+            </script>

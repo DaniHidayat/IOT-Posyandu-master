@@ -36,7 +36,7 @@ class Login extends CI_Controller {
 			);
             $this->session->set_userdata($datalogin);
             // echo "Masuk";
-            header('location:'.base_url().'../Page/dataalat');
+            header('location:'.base_url().'../Alat/dataalat');
         }else{
             // echo "Tidak Masuk";
             header('location:'.base_url().'../Login');
