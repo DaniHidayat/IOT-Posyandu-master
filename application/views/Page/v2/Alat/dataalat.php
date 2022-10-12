@@ -119,7 +119,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form class="form-horizontal" action="<?php echo base_url() . 'Page/prosesubahalat' ?>" method="post" enctype="multipart/form-data">
+                                <form class="form-horizontal" action="<?php echo base_url() . 'Alat/prosesubahalat' ?>" method="post" enctype="multipart/form-data">
                                     <div class="modal-body">
 
                                         <div class="form-group">

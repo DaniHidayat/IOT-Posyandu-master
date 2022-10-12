@@ -48,7 +48,7 @@
                 'lokasi' => $lokasi
             );
             $this->M_Tani->simpan_data('tb_alat', $data);
-            redirect('Page/dataalat');
+            redirect('Alat/dataalat');
         }
         function dataalat(){
             $data['tb_alat'] = $this->M_Tani->tampil_data('tb_alat','id_alat','ASC')->result();
@@ -81,7 +81,7 @@
 
             $where = array('id_alat' => $id_alat);
             $this->M_Tani->proses_update($where, $data, 'tb_alat');
-            redirect('Page/dataalat');
+            redirect('Alat/dataalat');
             
         }
 

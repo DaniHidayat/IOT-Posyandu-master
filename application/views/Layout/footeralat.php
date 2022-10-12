@@ -77,12 +77,7 @@
                 $hariminsix = $this->db->query("SELECT * FROM `tb_sensor` WHERE waktu IN (SELECT MAX(waktu) FROM tb_sensor WHERE id_alat = $id_alat AND waktu LIKE '%$hariminenam%')")->result();
                 foreach($hariminsix as $dataminsix);
                 ?>
-                console.log(<?= $id_alat?>);
-                console.log("<?= $currentDate?>");
-                console.log("<?= "ID Sensor :".$datamintree->id_sensor?>");
-                console.log("<?= "ID Alat :".$datamintree->id_alat?>");
-                console.log("<?= $datamintree->waktu?>");
-                console.log("<?= $datamintree->ph?>");
+               
             // Data
             var areaData = {
                 labels: [
