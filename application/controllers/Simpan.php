@@ -10,7 +10,15 @@
         {
         $this->load->model('M_Bayi');
 
-        $datasensor = array('berat_badan' => $berat_badan   );
+        $datasensor = array(
+            'kode_anak' => $kode_anak,
+            'nama_anak'=> $nama_anak,
+            'tanggal_lahir' => $tanggal_lahir,
+            'berat_badan' => $berat_badan,
+            'tinggi_badan' => $tinggi_badan,
+            'nama_ayah' => $nama_ayah,
+            'nama_ibu' => $nama_ibu,
+            'suhu_anak' => $suhu_anak   );
 
         if ($this->M_Bayi->save($datasensor)) {
             echo "BERHASIL";
