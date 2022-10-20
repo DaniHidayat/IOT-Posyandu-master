@@ -3,6 +3,20 @@
 
     class Simpan extends CI_Controller {
         public function index(){
+            echo " dani";
+        }
+
+        public function simpanData($kode_anak=null,$nama_anak=null,$tanggal_lahir=null,$berat_badan=null,$tinggi_badan=null,$nama_ayah=null,$nama_ibu=null,$kode_alat_posyandu,$suhu_anak)
+        {
+        $this->load->model('M_Bayi');
+
+        $datasensor = array('berat_badan' => $berat_badan   );
+
+        if ($this->M_Bayi->save($datasensor)) {
+            echo "BERHASIL";
+        } else {
+            echo "ERROR";
+        }
         }
         public function bacaperintah($id_alat){
             $this->load->model('M_Tani');

@@ -8,7 +8,7 @@
         }
         function save($datasensor)
         {
-            $this->db->insert('tb_sensor', $datasensor);
+            $this->db->insert('tb_anak', $datasensor);
             return TRUE;
         }
         function ambildataperintah($id_alat){
