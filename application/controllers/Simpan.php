@@ -6,11 +6,20 @@
             echo " dani";
         }
 
-        public function simpanData($kode_anak=null,$nama_anak=null,$tanggal_lahir=null,$berat_badan=null,$tinggi_badan=null,$nama_ayah=null,$nama_ibu=null,$kode_alat_posyandu,$suhu_anak)
+        public function simpanData(
+            $kode_anak,
+            $nama_anak,
+            $tanggal_lahir,
+            $berat_badan,
+            $tinggi_badan,
+            $nama_ayah,
+            $nama_ibu,
+            $kode_alat_posyandu,
+            $suhu_anak)
         {
         $this->load->model('M_Bayi');
 
-        $datasensor = array(
+        $databayi = array(
             'kode_anak' => $kode_anak,
             'nama_anak'=> $nama_anak,
             'tanggal_lahir' => $tanggal_lahir,
@@ -18,9 +27,11 @@
             'tinggi_badan' => $tinggi_badan,
             'nama_ayah' => $nama_ayah,
             'nama_ibu' => $nama_ibu,
+            'kode_alat_posyandu' => $kode_alat_posyandu,
             'suhu_anak' => $suhu_anak   );
 
-        if ($this->M_Bayi->save($datasensor)) {
+           
+        if ($this->M_Bayi->save($databayi)) {
             echo "BERHASIL";
         } else {
             echo "ERROR";

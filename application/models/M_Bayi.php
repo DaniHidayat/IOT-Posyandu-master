@@ -6,9 +6,9 @@
         function cek_akun($nm_tabel, $kondisi){
             return $this->db->get_where($nm_tabel, $kondisi);
         }
-        function save($datasensor)
+        function save($databayi)
         {
-            $this->db->insert('tb_anak', $datasensor);
+            $this->db->insert('tb_anak', $databayi);
             return TRUE;
         }
         function ambildataperintah($id_alat){
