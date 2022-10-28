@@ -44,7 +44,6 @@
                                     <thead>
                                         <tr>
                                             <th>ID ALAT</th>
-                                            <th>STATUS SENSOR ULTRASONIC</th>
                                             <th>KODE ALAT</th>
                                             <th>LOKASI</th>
                                             <th>AKSI</th>
@@ -183,21 +182,21 @@
                             {
                                 "data": 'id_alat'
                             },
-                            {
-                                "data": null,
-                                "render": function(data, type, row, meta) {
-                                    switch (data.suara) {
-                                        case "0":
-                                            return `<span class='
-                                            btn btn-danger btn-sm text-white '>Suara Sedang Mati</span>`;
-                                            break;
+                            // {
+                            //     "data": null,
+                            //     "render": function(data, type, row, meta) {
+                            //         switch (data.suara) {
+                            //             case "0":
+                            //                 return `<span class='
+                            //                 btn btn-danger btn-sm text-white '>Suara Sedang Mati</span>`;
+                            //                 break;
 
-                                        default:
-                                            return  `<span class='
-                                            btn btn-success btn-sm text-white '>Suara Sedang Nyala</span>`;
-                                    }
-                                }
-                            },
+                            //             default:
+                            //                 return  `<span class='
+                            //                 btn btn-success btn-sm text-white '>Suara Sedang Nyala</span>`;
+                            //         }
+                            //     }
+                            // },
                             {
                                 "data": 'kode_alat'
                             },

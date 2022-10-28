@@ -37,24 +37,24 @@
 
                             <div class="form-group row d-flex justify-content-between">
 
-                                <!-- <div class="col-xs-3">
-                                    <a href="#" data-toggle="modal" data-target="#alatAdd" class="btn btn-primary btn-icon-split">
+                                <div class="col-xs-3">
+                                    <a href="#" data-toggle="modal" data-target="#Add" class="btn btn-primary btn-icon-split">
 
                                         <span class="text">Tambah</span>
                                     </a>
-                                </div> -->
+                                </div>
 
-                                <div class="col-xs-4">
+                                <!-- <div class="col-xs-4">
                                     <select id="id_Posyandu" class="custom-select">
                                         <option value="all">Pilih Posyandu</option>
 
-                                        <?php foreach($tbl_alat as $ta) :?>
-                                        <option value="<?php echo $ta->kode_alat;?>"><?php echo $ta->lokasi;?></option>
-                                        
+                                        <?php foreach ($tbl_alat as $ta) : ?>
+                                            <option value="<?php echo $ta->kode_alat; ?>"><?php echo $ta->lokasi; ?></option>
 
-                                        <?php endforeach;?>
+
+                                        <?php endforeach; ?>
                                     </select>
-                                </div>
+                                </div> -->
                             </div>
 
 
@@ -65,10 +65,6 @@
                                             <th>KODE ANAK</th>
                                             <th>NAMA ANAK</th>
                                             <th>TANGGAL LAHIR</th>
-                                            <th>BERAT BADAN</th>
-                                            <th>TINGGI BADAN</th>
-                                            <th>LINGKAR LENGAN</th>
-                                            <th>LINGKAR KEPALA</th>
                                             <th>NAMA AYAH</th>
                                             <th>NAMA IBU</th>
                                             <th>AKSI</th>
@@ -87,7 +83,7 @@
             </div>
             <!-- End of Main Content -->
             <!-- Add Modal-->
-            <div class="modal fade" id="alatAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="Add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -97,7 +93,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal" action="<?php echo base_url() . 'Bayi/prosestambah' ?>" method="post" enctype="multipart/form-data">
+                            <form class="form-horizontal" action="<?php echo base_url() . 'DataBayi/prosestambah' ?>" method="post" enctype="multipart/form-data">
                                 <div class="modal-body">
 
                                     <div class="form-group">
@@ -118,30 +114,8 @@
                                             <input type="date" name="tanggal_lahir" class="form-control" id="inputUserName" placeholder="Tanggal Lahir" required>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="inputUserName" class="col-sm-4 control-label">Berat Badan</label>
-                                        <div class="col-sm-12">
-                                            <input type="text" name="berat_badan" class="form-control" id="inputUserName" placeholder="Berat Badan" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputUserName" class="col-sm-4 control-label">Tinggi Badan</label>
-                                        <div class="col-sm-12">
-                                            <input type="text" name="tinggi_badan" class="form-control id=" inputUserName" placeholder="Tinggi Badan" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputUserName" class="col-sm-4 control-label">Lingkar Lengan</label>
-                                        <div class="col-sm-12">
-                                            <input type="text" name="lingkar_lengan" class="form-control" id="inputUserName" placeholder="Lingkar Lengan" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputUserName" class="col-sm-4 control-label">Lingkar Kepala</label>
-                                        <div class="col-sm-12">
-                                            <input type="text" name="lingkar_kepala" class="form-control" id="inputUserName" placeholder="Lingkar Kepala" required>
-                                        </div>
-                                    </div>
+                                 
+                                   
                                     <div class="form-group">
                                         <label for="inputUserName" class="col-sm-4 control-label">Nama Ayah</label>
                                         <div class="col-sm-12">
@@ -181,14 +155,14 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form class="form-horizontal" action="<?php echo base_url() . 'Bayi/prosesubah' ?>" method="post" enctype="multipart/form-data">
+                                <form class="form-horizontal" action="<?php echo base_url() . 'DataBayi/prosesubah' ?>" method="post" enctype="multipart/form-data">
                                     <div class="modal-body">
 
                                         <div class="form-group">
                                             <label for="inputUserName" class="col-sm-4 control-label">Kode Bayi</label>
                                             <div class="col-sm-12">
                                                 <input type="hidden" value="<?php echo $ta->id; ?>" name="id">
-                                                <input type="text" value="<?php echo $ta->kode_anak; ?>" name="kode" readonly class="form-control" id="inputUserName" placeholder="Kode Bayi" required>
+                                                <input type="text" value="<?php echo $ta->kode_bayi; ?>" name="kode" readonly class="form-control" id="inputUserName" placeholder="Kode Bayi" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -203,30 +177,9 @@
                                                 <input type="date" value="<?php echo $ta->tanggal_lahir; ?>" name="tanggal_lahir" class="form-control" id="inputUserName" placeholder="Tanggal Lahir" required>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="inputUserName" class="col-sm-4 control-label">Berat Badan</label>
-                                            <div class="col-sm-12">
-                                                <input type="text" value="<?php echo $ta->berat_badan; ?>" name="berat_badan" class="form-control" id="inputUserName" placeholder="Berat Badan" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputUserName" class="col-sm-4 control-label">Tinggi Badan</label>
-                                            <div class="col-sm-12">
-                                                <input type="text" value="<?php echo $ta->tinggi_badan; ?>" name="tinggi_badan" class="form-control" id="inputUserName" placeholder="Tinggi Badan" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputUserName" class="col-sm-4 control-label">Lingkar Lengan</label>
-                                            <div class="col-sm-12">
-                                                <input type="text" value="<?php echo $ta->lingkar_lengan; ?>" name="lingkar_lengan" class="form-control" id="inputUserName" placeholder="Lingkar Lengan" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputUserName" class="col-sm-4 control-label">Lingkar Kepala</label>
-                                            <div class="col-sm-12">
-                                                <input type="text" value="<?php echo $ta->lingkar_kepala; ?>" name=" lingkar_kepala" class="form-control" id="inputUserName" placeholder="Lingkar Kepala" required>
-                                            </div>
-                                        </div>
+                                       
+                                        
+                                       
                                         <div class="form-group">
                                             <label for="inputUserName" class="col-sm-4 control-label">Nama Ayah</label>
                                             <div class="col-sm-12">
@@ -281,7 +234,7 @@
                             [0, 'asc']
                         ], // Default sortingnya berdasarkan kolom / field ke 0 (paling pertama)
                         "ajax": {
-                            "url": "<?php echo base_url('Bayi/showBayi') ?>", // URL file untuk proses select datanya
+                            "url": "<?php echo base_url('DataBayi/showBayi') ?>", // URL file untuk proses select datanya
                             "type": "POST",
                             'data': function(data) {
                                 // Read values
@@ -303,7 +256,7 @@
 
 
                             {
-                                "data": 'kode_anak'
+                                "data": 'kode_bayi'
                             },
                             {
                                 "data": 'nama_anak'
@@ -311,18 +264,7 @@
                             {
                                 "data": 'tanggal_lahir'
                             },
-                            {
-                                "data": 'berat_badan'
-                            },
-                            {
-                                "data": 'tinggi_badan'
-                            },
-                            {
-                                "data": 'lingkar_lengan'
-                            },
-                            {
-                                "data": 'lingkar_kepala'
-                            },
+
                             {
                                 "data": 'nama_ayah'
                             },

@@ -1,7 +1,7 @@
 <?php 
     defined('BASEPATH') OR exit('No direct script access allowed');
 
-    class M_Bayi extends CI_Model{
+    class M_DATA_Bayi extends CI_Model{
         // Proses authentication
         function cek_akun($nm_tabel, $kondisi){
             return $this->db->get_where($nm_tabel, $kondisi);
@@ -40,54 +40,52 @@
     //count all
     public function count_all()
     {
-        $this->db->from("tb_anak")->count_all_results();
+        $this->db->from("tb_bayi")->count_all_results();
     }
-    function filter_data($search = null, $limit = null, $start = null, $order_field = null, $order_ascdesc = null, $id_alat)
+    function filter_data($search = null, $limit = null, $start = null, $order_field = null, $order_ascdesc = null)
     {
 
         $this->db->select('*');
-        $this->db->from('tb_anak ');
-        $this->db->join('tb_bayi', 'tb_bayi.kode_bayi = tb_anak.kode_anak');
+        $this->db->from('tb_bayi ');
+       
 
         if (!empty($search)) {
-            $this->db->like('kode_anak', $search); // Untuk 
+            $this->db->like('kode_bayi', $search); // Untuk 
             $this->db->or_like('nama_anak', $search); // Untuk menambahkan query where LIKE       
         }
-        if($id_alat !== "all" ){
-            $this->db->where('kode_alat_posyandu', $id_alat);
-        }
+        // if($id_alat !== "all" ){
+        //     $this->db->where('kode_alat_posyandu', $id_alat);
+        // }
        //menambahkan query ORDER BY
         $this->db->limit($limit, $start); // Untuk menambahkan query LIMIT
         $query = $this->db->get();
         return $query->result_array();   // Eksekusi query sql sesuai kondisi diatas
     }
 
-    public function count_filter($search, $id_alat)
+    public function count_filter($search)
     {
         $this->db->select('*');
-        $this->db->from('tb_anak ');
-        $this->db->join('tb_bayi', 'tb_bayi.kode_bayi = tb_anak.kode_anak');
+        $this->db->from('tb_bayi ');
+  
         if (!empty($search)) {
             $this->db->like('kode_anak', $search); // Untuk 
             $this->db->or_like('nama_anak', $search); // Untuk menambahkan query where LIKE
         }
-        if ($id_alat !== "all") {
-            $this->db->where('kode_alat_posyandu', $id_alat);
-        }
+        // if ($id_alat !== "all") {
+        //     $this->db->where('kode_alat_posyandu', $id_alat);
+        // }
         $query = $this->db->get();
         return $query->num_rows();  // Untuk menghitung jumlah data sesuai dengan filter pada textbox pencarian
     }
 
 
         // Menampilkan Data Dari Database
-        function tampil_data($nm_table,$field,$order,$id_alat=null){
+        function tampil_data($nm_table,$field,$order){
             
         
             $this->db->select('*');
             $this->db->from($nm_table);
-            if($id_alat != 0){
-            $this->db->where('kode_alat_posyandu', $id_alat);
-            }
+           
             $this->db->order_by($field, $order);
             return $this->db->get();
         }
