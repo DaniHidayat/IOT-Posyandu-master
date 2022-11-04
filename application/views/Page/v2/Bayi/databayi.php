@@ -48,11 +48,11 @@
                                     <select id="id_Posyandu" class="custom-select">
                                         <option value="all">Pilih Posyandu</option>
 
-                                        <?php foreach($tbl_alat as $ta) :?>
-                                        <option value="<?php echo $ta->kode_alat;?>"><?php echo $ta->lokasi;?></option>
-                                        
+                                        <?php foreach ($tbl_alat as $ta) : ?>
+                                            <option value="<?php echo $ta->kode_alat; ?>"><?php echo $ta->lokasi; ?></option>
 
-                                        <?php endforeach;?>
+
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>
@@ -194,7 +194,7 @@
                                         <div class="form-group">
                                             <label for="inputUserName" class="col-sm-4 control-label">Nama Anak</label>
                                             <div class="col-sm-12">
-                                                <input type="text" value="<?php echo $ta->nama_anak; ?>" name="nama_anak" class="form-control" id="inputUserName" placeholder="Nama Anak" required>
+                                                <input type="text" value="<?php echo $ta->nama_anak; ?>" name="nama_anak" readonly class="form-control" id="inputUserName" placeholder="Nama Anak" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
