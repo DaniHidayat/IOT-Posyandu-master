@@ -86,7 +86,8 @@
             redirect('Bayi/databayi');
         }
         function databayi(){
-            $data['tb_anak'] = $this->M_Bayi->tampil_data('tb_anak','id','ASC')->result();
+            $data['tb_anak'] = $this->db->query("SELECT * FROM tb_anak AS anak JOIN tb_bayi AS bayi ON anak.kode_anak = bayi.kode_bayi")->result();
+
             $data['tbl_alat'] = $this->M_Tani->tampil_data('tb_alat', 'id_alat', 'ASC')->result();
             $this->load->view('Page/V2/bayi/databayi',$data);
             $this->load->view('Layout/V2/footer');
@@ -101,29 +102,29 @@
         }
         function prosesubah(){
         $id = $this->input->post('id');
-        $kode = $this->input->post('kode');
-        $nama_anak = $this->input->post('nama_anak');
+        // $kode = $this->input->post('kode');
+        // $nama_anak = $this->input->post('nama_anak');
         $tanggal_lahir = $this->input->post('tanggal_lahir');
         $berat_badan = $this->input->post('berat_badan');
         $tinggi_badan = $this->input->post('tinggi_badan');
         $lingkar_lengan = $this->input->post('lingkar_lengan');
         $lingkar_kepala = $this->input->post('lingkar_kepala');
-        $nama_ayah = $this->input->post('nama_ayah');
-        $nama_ibu = $this->input->post('nama_ibu');
+        // $nama_ayah = $this->input->post('nama_ayah');
+        // $nama_ibu = $this->input->post('nama_ibu');
 
 
 
 
         $data = array(
-            'kode_anak' => $kode,
-            'nama_anak' => $nama_anak,
-            'tanggal_lahir' => $tanggal_lahir,
+            // 'kode_anak' => $kode,
+            // 'nama_anak' => $nama_anak,
+            // 'tanggal_lahir' => $tanggal_lahir,
             'berat_badan' => $berat_badan,
             'tinggi_badan' => $tinggi_badan,
             'lingkar_lengan' => $lingkar_lengan,
             'lingkar_kepala' => $lingkar_kepala,
-            'nama_ayah' => $nama_ayah,
-            'nama_ibu' => $nama_ibu,
+            // 'nama_ayah' => $nama_ayah,
+            // 'nama_ibu' => $nama_ibu,
         );
 
             $where = array('id' => $id);
@@ -132,7 +133,7 @@
             
         }
 
-        //End Alat
+        //End Bayi
    
 
     }
