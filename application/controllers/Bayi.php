@@ -1,6 +1,6 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
-    //kontol
+
     class Bayi extends CI_Controller {
         function __construct(){
             parent::__construct();
@@ -15,12 +15,12 @@
             }
             // Setup
            
-            // // $this->load->view('Layout/V2/navbar');
-            // $this->load->view('Layout/V2/sidebar');
+            // // $this->load->view('Layout2/navbar');
+            // $this->load->view('Layout2/sidebar');
         }
         function beranda(){
-            $this->load->view('Page/v2/Bayi/beranda');
-            $this->load->view('Layout/v2/Bayi/footer');
+            $this->load->view('Bayi/beranda');
+            $this->load->view('Layout2/Bayi/footer');
         }
 
     // ALAT
@@ -89,8 +89,8 @@
             $data['tb_anak'] = $this->db->query("SELECT * FROM tb_anak AS anak JOIN tb_bayi AS bayi ON anak.kode_anak = bayi.kode_bayi")->result();
 
             $data['tbl_alat'] = $this->M_Tani->tampil_data('tb_alat', 'id_alat', 'ASC')->result();
-            $this->load->view('Page/V2/bayi/databayi',$data);
-            $this->load->view('Layout/V2/footer');
+            $this->load->view('Bayi/databayi',$data);
+            $this->load->view('Layout2/footer');
         }
         function editbayi($id_alat){
             $where = array('id_alat' => $id_alat);
@@ -100,11 +100,12 @@
             $this->load->view('Page/ubahalat',$data);
             $this->load->view('Layout/footer');
         }
-        function prosesubah(){
-        $id = $this->input->post('id');
-        // $kode = $this->input->post('kode');
+        function prosesubah()
+    {
+        $id_anak = $this->input->post('id_anak');
+        $kode = $this->input->post('kode');
         // $nama_anak = $this->input->post('nama_anak');
-        $tanggal_lahir = $this->input->post('tanggal_lahir');
+        // $tanggal_lahir = $this->input->post('tanggal_lahir');
         $berat_badan = $this->input->post('berat_badan');
         $tinggi_badan = $this->input->post('tinggi_badan');
         $lingkar_lengan = $this->input->post('lingkar_lengan');
@@ -116,7 +117,7 @@
 
 
         $data = array(
-            // 'kode_anak' => $kode,
+            'kode_anak' => $kode,
             // 'nama_anak' => $nama_anak,
             // 'tanggal_lahir' => $tanggal_lahir,
             'berat_badan' => $berat_badan,
@@ -127,11 +128,10 @@
             // 'nama_ibu' => $nama_ibu,
         );
 
-            $where = array('id' => $id);
-            $this->M_Tani->proses_update($where, $data, 'tb_anak');
-            redirect('Bayi/databayi');
-            
-        }
+        $where = array('id_anak' => $id_anak);
+        $this->M_Tani->proses_update($where, $data, 'tb_anak');
+        redirect('Bayi/databayi');
+    }
 
         //End Bayi
    
