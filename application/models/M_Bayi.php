@@ -50,8 +50,8 @@
         $this->db->join('tb_bayi', 'tb_bayi.kode_bayi = tb_anak.kode_anak');
 
         if (!empty($search)) {
-            $this->db->like('kode_anak', $search); // Untuk 
-            $this->db->or_like('nama_anak', $search); // Untuk menambahkan query where LIKE       
+            $this->db->like('tb_anak.kode_anak', $search); // Untuk 
+            $this->db->or_like('tb_anak.nama_anak', $search); // Untuk menambahkan query where LIKE       
         }
         if($id_alat !== "all" ){
             $this->db->where('kode_alat_posyandu', $id_alat);
@@ -68,8 +68,8 @@
         $this->db->from('tb_anak ');
         $this->db->join('tb_bayi', 'tb_bayi.kode_bayi = tb_anak.kode_anak');
         if (!empty($search)) {
-            $this->db->like('kode_anak', $search); // Untuk 
-            $this->db->or_like('nama_anak', $search); // Untuk menambahkan query where LIKE
+            $this->db->like('tb_anak.kode_anak', $search); // Untuk 
+            $this->db->or_like('tb_anak.nama_anak', $search); // Untuk menambahkan query where LIKE
         }
         if ($id_alat !== "all") {
             $this->db->where('kode_alat_posyandu', $id_alat);

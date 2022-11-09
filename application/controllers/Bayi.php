@@ -42,7 +42,7 @@
         $sql_data = $this->M_Bayi->filter_data($search, $limit, $start, $order_field, $order_ascdesc,$id_alat); // Panggil fungsi filter
         $sql_filter = $this->M_Bayi->count_filter($search, $id_alat); // Panggil fungsi count_filter 
         $callback = array(
-            'draw' => $_POST['draw'], // Ini dari datatablenya
+            'draw' => isset($_POST['draw'])?  $_POST['draw'] :'', // Ini dari datatablenya
             'recordsTotal' => $sql_total,
             'recordsFiltered' => $sql_filter,
             'data' => $sql_data

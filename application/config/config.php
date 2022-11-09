@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-// $config['base_url'] = 'http://meniti.id/innovillage/index.php/';
-$config['base_url'] = 'http://localhost/IOT-Posyandu-master-main/index.php/'; //Agung
+//$config['base_url'] = 'https://posyandu.inovasi-sttybsi.com/index.php/';
+$config['base_url'] = 'http://localhost/IOT-Posyandu-master/index.php/'; //Agung
 // $config['base_url'] = 'http://localhost:8888/innovillage/index.php/'; //dani
 
 
