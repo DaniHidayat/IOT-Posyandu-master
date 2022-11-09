@@ -62,7 +62,6 @@
                                 <table id="table_bayi" class="table table-bordered" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
                                             <th>KODE ANAK</th>
                                             <th>NAMA ANAK</th>
                                             <th>TANGGAL LAHIR</th>
@@ -79,7 +78,6 @@
                                     <tbody>
                                     <?php foreach ($tb_anak as $ta) : ?>
                                         <tr>
-                                        <td><?php echo $ta->id_anak; ?></td>
                                         <td><?php echo $ta->kode_anak; ?></td>
                                         <td><?php echo $ta->nama_anak; ?></td>
                                         <td><?php echo $ta->tanggal_lahir; ?></td>
@@ -171,3 +169,91 @@
     </div>
 </div>
 <?php endforeach; ?>
+<script src="<?php echo base_url('../assets/sb2/'); ?>vendor/jquery/jquery.min.js"></script>
+            <script>
+                $(document).ready(function() {
+
+                    show();
+                    $("#id_Posyandu").change(function() {
+                        $('#id_Posyandu').val($(this).val());
+                        $('#table_bayi').DataTable().ajax.reload();
+
+                    });
+                });
+
+
+                function show() {
+
+                    var i = 1;
+                    $('#table_bayi').DataTable({
+                        "processing": true,
+                        "serverSide": true,
+                        "pageLength": 50,
+                        "ordering": true, // Set true agar bisa di sorting
+                        "order": [
+                            [0, 'asc']
+                        ], // Default sortingnya berdasarkan kolom / field ke 0 (paling pertama)
+                        "ajax": {
+                            "url": "<?php echo base_url('Bayi/showBayi') ?>", // URL file untuk proses select datanya
+                            "type": "POST",
+                            'data': function(data) {
+                                // Read values
+                                var id_alat = $('#id_Posyandu').val();
+
+
+                                // Append to data
+                                data.id_alat = id_alat;
+
+                            }
+                        },
+                        "deferRender": true,
+                        "aLengthMenu": [
+                            [50, 100, 500],
+                            [50, 100, 500]
+                        ], // Combobox Limit
+                        "columns": [
+
+
+                            {
+                                "data": 'kode_anak'
+                            },
+                            {
+                                "data": 'nama_anak'
+                            },
+                            {
+                                "data": 'tanggal_lahir'
+                            },
+                            {
+                                "data": 'berat_badan'
+                            },
+                            {
+                                "data": 'tinggi_badan'
+                            },
+                            {
+                                "data": 'suhu_anak'
+                            },
+                            {
+                                "data": 'lingkar_lengan'
+                            },
+                            {
+                                "data": 'lingkar_kepala'
+                            },
+                            {
+                                "data": 'nama_ayah'
+                            },
+                            {
+                                "data": 'nama_ibu'
+                            },
+
+                            {
+                                "data": null,
+                                "render": function(data, type, row, meta) {
+                                    data = `<a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalEdit` + data.id_anak + `">Edit </a>`;
+                                    return data;
+                                }
+                            },
+
+                        ]
+                    });
+                }
+            </script>

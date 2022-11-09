@@ -18,5 +18,6 @@
 
     <!-- Custom styles for this page -->
     <link href="<?php echo base_url('../assets/sb2/'); ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="<?= base_url('../assets/images/logo-KPP.png')?>" /> 
 
 </head>

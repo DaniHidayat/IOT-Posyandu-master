@@ -15,7 +15,7 @@
                     <div class="col-lg-2">
                       <div class="row">
                         <div class="col-lg-12">
-                          <a href="<?= base_url('/Login/alat')?>" class="btn btn-warning btn-sm col-lg-6 mt-2">Alat</a>
+                          <!--<a href="<?= base_url('/Login/alat')?>" class="btn btn-warning btn-sm col-lg-6 mt-2">Alat</a>-->
                           <a href="<?= base_url('/Login')?>" class="btn btn-primary btn-sm col-lg-6 mt-1">admin</a>
                         </div>
                       </div>

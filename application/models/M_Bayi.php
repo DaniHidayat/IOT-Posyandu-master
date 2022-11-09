@@ -42,7 +42,7 @@
     {
         $this->db->from("tb_anak")->count_all_results();
     }
-    function filter_data($search = null, $limit = null, $start = null, $order_field = null, $order_ascdesc = null, $id_alat)
+    function filter_data($search = null, $limit = null, $start = null, $order_field = null, $order_ascdesc = null, $id_alat = null)
     {
 
         $this->db->select('*');
