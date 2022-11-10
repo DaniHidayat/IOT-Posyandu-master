@@ -6,9 +6,9 @@
         function cek_akun($nm_tabel, $kondisi){
             return $this->db->get_where($nm_tabel, $kondisi);
         }
-        function save($datasensor)
+        function save($databayi)
         {
-            $this->db->insert('tb_sensor', $datasensor);
+            $this->db->insert('tb_anak', $databayi);
             return TRUE;
         }
         function ambildataperintah($id_alat){
@@ -36,10 +36,56 @@
             $query = $this->db->query($sql, array($dari, $sampai, $id_alat));
             return $query;
         }
+
+    //count all
+    public function count_all()
+    {
+        $this->db->from("tb_alat")->count_all_results();
+    }
+    function filter_data($search = null, $limit = null, $start = null, $order_field = null, $order_ascdesc = null)
+    {
+
+        $this->db->select('*');
+        $this->db->from('tb_alat ');
+       
+
+        if (!empty($search)) {
+            $this->db->like('kode_alat', $search); // Untuk 
+            $this->db->or_like('nama_posyandu', $search); // Untuk menambahkan query where LIKE       
+        }
+        // if($id_alat !== "all" ){
+        //     $this->db->where('kode_alat_posyandu', $id_alat);
+        // }
+       //menambahkan query ORDER BY
+        $this->db->limit($limit, $start); // Untuk menambahkan query LIMIT
+        $query = $this->db->get();
+        return $query->result_array();   // Eksekusi query sql sesuai kondisi diatas
+    }
+
+    public function count_filter($search)
+    {
+        $this->db->select('*');
+        $this->db->from('tb_alat ');
+  
+        if (!empty($search)) {
+            $this->db->like('kode_alat', $search); // Untuk 
+            $this->db->or_like('nama_posyandu', $search); // Untuk menambahkan query where LIKE
+        }
+        // if ($id_alat !== "all") {
+        //     $this->db->where('kode_alat_posyandu', $id_alat);
+        // }
+        $query = $this->db->get();
+        return $query->num_rows();  // Untuk menghitung jumlah data sesuai dengan filter pada textbox pencarian
+    }
+
+
         // Menampilkan Data Dari Database
         function tampil_data($nm_table,$field,$order){
+            
+        
             $this->db->select('*');
             $this->db->from($nm_table);
+           
             $this->db->order_by($field, $order);
             return $this->db->get();
         }

@@ -49,7 +49,7 @@
                                         <option value="all">Pilih Posyandu</option>
 
                                         <?php foreach ($tbl_alat as $ta) : ?>
-                                            <option value="<?php echo $ta->kode_alat; ?>"><?php echo $ta->lokasi; ?></option>
+                                            <option value="<?php echo $ta->kode_alat; ?>"><?php echo $ta->nama_posyandu; ?></option>
 
 
                                         <?php endforeach; ?>

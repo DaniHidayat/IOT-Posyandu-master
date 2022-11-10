@@ -87,7 +87,7 @@ class DataBayi extends CI_Controller
             'nama_ayah' => $nama_ayah,
             'nama_ibu' => $nama_ibu,
         );
-        $this->M_Bayi->simpan_data('tb_bayi', $data);
+        $this->M_DATA_Bayi->simpan_data('tb_bayi', $data);
         redirect('DataBayi/databayi');
     }
     function databayi()
