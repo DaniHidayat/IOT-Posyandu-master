@@ -75,13 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	// 'hostname' => 'localhost',
-	// 'username' => 'root',
-	// 'password' => '',
-	//Dani
-	'hostname' => 'localhost:8889',
+	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => 'root',
+	'password' => '',
 	'database' => 'db_innovillage',
 	// 'hostname' => 'localhost',
 	// 'username' => 'u1606221',
