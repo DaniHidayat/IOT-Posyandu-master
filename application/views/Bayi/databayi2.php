@@ -72,6 +72,7 @@
                                             <th>LINGKAR KEPALA</th>
                                             <th>NAMA AYAH</th>
                                             <th>NAMA IBU</th>
+                                            <th>WAKTU</th>
                                             <th>AKSI</th>
                                         </tr>
                                     </thead>
@@ -88,6 +89,7 @@
                                         <td><?php echo $ta->lingkar_kepala; ?></td>
                                         <td><?php echo $ta->nama_ayah; ?></td>
                                         <td><?php echo $ta->nama_ibu; ?></td>
+                                        <td><?php echo $ta->waktu; ?></td>
                                         <td><a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalEdit<?php echo $ta->id_anak; ?>">Edit </a></td>
                                         </tr>
 
@@ -243,6 +245,9 @@
                             },
                             {
                                 "data": 'nama_ibu'
+                            },
+                            {
+                                "data": 'waktu'
                             },
 
                             {
