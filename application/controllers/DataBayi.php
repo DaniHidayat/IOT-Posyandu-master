@@ -92,7 +92,7 @@ class DataBayi extends CI_Controller
     }
     function databayi()
     {
-        $data['tb_anak'] = $this->M_DATA_Bayi->tampil_data('tb_bayi', 'id', 'ASC')->result();
+        $data['tb_anak'] = $this->M_DATA_Bayi->tampil_data('tb_bayi', 'kode_bayi', 'ASC')->result();
         $data['tbl_alat'] = $this->M_Tani->tampil_data('tb_alat', 'id_alat', 'ASC')->result();
         $this->load->view('DataBayi/v_data_bayi', $data);
         $this->load->view('Layout2/footer');

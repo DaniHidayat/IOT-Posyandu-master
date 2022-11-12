@@ -135,6 +135,36 @@
     }
 
         //End Bayi
+
+        //laporan
+        function laporan(){
+        $data['tb_anak'] = $this->db->query("SELECT * FROM tb_anak AS anak JOIN tb_bayi AS bayi ON anak.kode_anak = bayi.kode_bayi")->result();
+
+        $data['tbl_alat'] = $this->M_Tani->tampil_data('tb_alat', 'id_alat', 'ASC')->result();
+        $this->load->view('Bayi/laporan', $data);
+        $this->load->view('Layout2/footer');
+        }
+
+        public function cetak_laporan()
+        {
+           $this->load->library('dompdf_gen');
+           $awal = $this->input->post('awal');
+           $akhir = $this->input->post('akhir');
+
+           $data['databayi'] = $this->M_Bayi->laporan_by_date($awal,$akhir);
+
+
+            $this->load->view('Bayi/v_laporan_bayi',$data);
+            $paper_size = 'A4';
+            $orientation = 'potrait';
+            $html = $this->output->get_output();
+            $this->dompdf->set_paper($paper_size,$orientation);
+            $this->dompdf->load_html($html);
+            $this->dompdf->render();
+            $this->dompdf->stream('Laporan_Hasil_Bayi.pdf', array('Attachment' => 0));
+        
+           
+        }
    
 
     }

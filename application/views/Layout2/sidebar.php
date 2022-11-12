@@ -94,7 +94,7 @@
       <li class="nav-item active">
           <a class="nav-link" href="<?php echo site_url('DataBayi/databayi'); ?>">
               <i class="fas fa-fw fa-table"></i>
-              <span>Data  Bayi</span></a>
+              <span>Data Bayi</span></a>
       </li>
       <li class="nav-item active">
           <a class="nav-link" href="<?php echo site_url('Bayi/databayi'); ?>">
@@ -105,6 +105,11 @@
           <a class="nav-link" href="<?php echo site_url('Alat/dataalat'); ?>">
               <i class="fas fa-fw fa-table"></i>
               <span>Data Posyandu & Alat</span></a>
+      </li>
+      <li class="nav-item active">
+          <a class="nav-link" href="<?php echo site_url('Bayi/laporan'); ?>">
+              <i class="fas fa-fw fa-table"></i>
+              <span>Laporan</span></a>
       </li>
       <!-- <li class="nav-item active">
           <a class="nav-link" href="<?php echo site_url('FORM'); ?>">
