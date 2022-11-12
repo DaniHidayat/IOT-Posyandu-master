@@ -15,12 +15,12 @@
             }
             // Setup
            
-            // // $this->load->view('Layout/V2/navbar');
-            // $this->load->view('Layout/V2/sidebar');
+            // // $this->load->view('Layout2/navbar');
+            // $this->load->view('Layout2/sidebar');
         }
         function beranda(){
-            $this->load->view('Page/v2/Bayi/beranda');
-            $this->load->view('Layout/v2/Bayi/footer');
+            $this->load->view('Bayi/beranda');
+            $this->load->view('Layout2/Bayi/footer');
         }
 
     // ALAT
@@ -42,7 +42,7 @@
         $sql_data = $this->M_Bayi->filter_data($search, $limit, $start, $order_field, $order_ascdesc,$id_alat); // Panggil fungsi filter
         $sql_filter = $this->M_Bayi->count_filter($search, $id_alat); // Panggil fungsi count_filter 
         $callback = array(
-            'draw' => $_POST['draw'], // Ini dari datatablenya
+            'draw' => isset($_POST['draw'])?  $_POST['draw'] :'', // Ini dari datatablenya
             'recordsTotal' => $sql_total,
             'recordsFiltered' => $sql_filter,
             'data' => $sql_data
@@ -89,8 +89,9 @@
             $data['tb_anak'] = $this->db->query("SELECT * FROM tb_anak AS anak JOIN tb_bayi AS bayi ON anak.kode_anak = bayi.kode_bayi")->result();
 
             $data['tbl_alat'] = $this->M_Tani->tampil_data('tb_alat', 'id_alat', 'ASC')->result();
-            $this->load->view('Page/V2/bayi/databayi',$data);
-            $this->load->view('Layout/V2/footer');
+            $this->load->view('Bayi/databayi2',$data);
+            $this->load->view('Layout2/footer');
+            
         }
         function editbayi($id_alat){
             $where = array('id_alat' => $id_alat);
@@ -100,11 +101,12 @@
             $this->load->view('Page/ubahalat',$data);
             $this->load->view('Layout/footer');
         }
-        function prosesubah(){
-        $id = $this->input->post('id');
-        // $kode = $this->input->post('kode');
+        function prosesubah()
+    {
+        $id_anak = $this->input->post('id_anak');
+        $kode = $this->input->post('kode');
         // $nama_anak = $this->input->post('nama_anak');
-        $tanggal_lahir = $this->input->post('tanggal_lahir');
+        // $tanggal_lahir = $this->input->post('tanggal_lahir');
         $berat_badan = $this->input->post('berat_badan');
         $tinggi_badan = $this->input->post('tinggi_badan');
         $lingkar_lengan = $this->input->post('lingkar_lengan');
@@ -116,7 +118,7 @@
 
 
         $data = array(
-            // 'kode_anak' => $kode,
+            'kode_anak' => $kode,
             // 'nama_anak' => $nama_anak,
             // 'tanggal_lahir' => $tanggal_lahir,
             'berat_badan' => $berat_badan,
@@ -127,13 +129,53 @@
             // 'nama_ibu' => $nama_ibu,
         );
 
-            $where = array('id' => $id);
-            $this->M_Tani->proses_update($where, $data, 'tb_anak');
-            redirect('Bayi/databayi');
-            
-        }
+        $where = array('id_anak' => $id_anak);
+        $this->M_Tani->proses_update($where, $data, 'tb_anak');
+        redirect('Bayi/databayi');
+    }
 
         //End Bayi
+
+        //laporan
+        function laporan(){
+        $data['tb_anak'] = $this->db->query("SELECT * FROM tb_anak AS anak JOIN tb_bayi AS bayi ON anak.kode_anak = bayi.kode_bayi")->result();
+
+        $data['tbl_alat'] = $this->M_Tani->tampil_data('tb_alat', 'id_alat', 'ASC')->result();
+        $this->load->view('Bayi/laporan', $data);
+        $this->load->view('Layout2/footer');
+        }
+
+        public function cetak_laporan()
+        {
+           $this->load->library('dompdf_gen');
+           $awal = $this->input->post('awal');
+           $akhir = $this->input->post('akhir');
+
+           $data['databayi'] = $this->M_Bayi->laporan_by_date($awal,$akhir);
+
+
+            $this->load->view('Bayi/v_laporan_bayi',$data);
+            $paper_size = 'A4';
+            $orientation = 'potrait';
+            $html = $this->output->get_output();
+            $this->dompdf->set_paper($paper_size,$orientation);
+            $this->dompdf->load_html($html);
+            $this->dompdf->render();
+            $this->dompdf->stream('Laporan_Hasil_Bayi.pdf', array('Attachment' => 0));
+        
+           
+        }
+    public function cetak_laporan_excel()
+    {
+        $this->load->library('dompdf_gen');
+        $awal = $this->input->post('awal');
+        $akhir = $this->input->post('akhir');
+        $data['awal'] = $awal;
+        $data['akhir'] = $akhir;
+        $data['databayi'] = $this->M_Bayi->laporan_by_date($awal, $akhir);
+        $this->load->view('Bayi/v_laporan_bayi_excel', $data);
+       
+    }
    
 
     }

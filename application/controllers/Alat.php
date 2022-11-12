@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class DataBayi extends CI_Controller
+class Alat extends CI_Controller
 {
     function __construct()
     {
         parent::__construct();
         // Models
-        $this->load->model('M_Bayi');
+        $this->load->model('M_Tani');
         $this->load->model('M_Tani');
         // Helper URL
         $this->load->helper('url');
@@ -17,22 +17,22 @@ class DataBayi extends CI_Controller
         }
         // Setup
 
-        // // $this->load->view('Layout/V2/navbar');
-        // $this->load->view('Layout/V2/sidebar');
+        // // $this->load->view('Layout2/navbar');
+        // $this->load->view('Layout2/sid_alatebar');
     }
     function beranda()
     {
-        $this->load->view('Page/v2/DataBayi/beranda');
-        $this->load->view('Layout/v2/Bayi/footer');
+        $this->load->view('Alat/beranda');
+        $this->load->view('Layout2/Bayi/footer');
     }
 
     // ALAT
 
 
-    public function showBayi()
+    public function showAlat()
     {
 
-        $id_alat = $this->input->post('id_alat');
+       
 
         $search = isset($_POST['search']['value']) ? $_POST['search']['value'] : ' '; // Ambil data yang di ketik user pada textbox pencarian
         $limit = isset($_POST['length']) ? $_POST['length'] : ' '; // Ambil data limit per page
@@ -41,9 +41,9 @@ class DataBayi extends CI_Controller
         $order_field = isset($_POST['columns'][$order_index]['data']) ? $_POST['columns'][$order_index]['data'] : ''; // Untuk mengambil nama field yg menjadi acuan untuk sorting
         $order_ascdesc = $_POST['order'][0]['dir']; // Untuk menentukan order by "ASC" atau "DESC"
         // $order_ascdesc = $_POST['order'][0]['dir']; // Untuk menentukan order by "ASC" atau "DESC"
-        $sql_total = $this->M_Bayi->count_all(); // Panggil fungsi count_all  
-        $sql_data = $this->M_Bayi->filter_data($search, $limit, $start, $order_field, $order_ascdesc, $id_alat); // Panggil fungsi filter
-        $sql_filter = $this->M_Bayi->count_filter($search, $id_alat); // Panggil fungsi count_filter 
+        $sql_total = $this->M_Tani->count_all(); // Panggil fungsi count_all  
+        $sql_data = $this->M_Tani->filter_data($search, $limit, $start, $order_field, $order_ascdesc); // Panggil fungsi filter
+        $sql_filter = $this->M_Tani->count_filter($search); // Panggil fungsi count_filter 
         $callback = array(
             'draw' => $_POST['draw'], // Ini dari datatablenya
             'recordsTotal' => $sql_total,
@@ -64,42 +64,42 @@ class DataBayi extends CI_Controller
     {
 
         $kode = $this->input->post('kode');
-        $nama_anak = $this->input->post('nama_anak');
-        $tanggal_lahir = $this->input->post('tanggal_lahir');
-        $berat_badan = $this->input->post('berat_badan');
-        $tinggi_badan = $this->input->post('tinggi_badan');
-        $lingkar_lengan = $this->input->post('lingkar_lengan');
-        $lingkar_kepala = $this->input->post('lingkar_kepala');
-        $nama_ayah = $this->input->post('nama_ayah');
-        $nama_ibu = $this->input->post('nama_ibu');
+        $nama_posyandu = $this->input->post('nama_posyandu');
+        $lokasi = $this->input->post('lokasi');
+        // $berat_badan = $this->input->post('berat_badan');
+        // $tinggi_badan = $this->input->post('tinggi_badan');
+        // $lingkar_lengan = $this->input->post('lingkar_lengan');
+        // $lingkar_kepala = $this->input->post('lingkar_kepala');
+        // $nama_ayah = $this->input->post('nama_ayah');
+        // $nama_ibu = $this->input->post('nama_ibu');
 
 
 
 
         $data = array(
-            'kode_anak' => $kode,
-            'nama_anak' => $nama_anak,
-            'tanggal_lahir' => $tanggal_lahir,
-            'berat_badan' => $berat_badan,
-            'tinggi_badan' => $tinggi_badan,
-            'lingkar_lengan' => $lingkar_lengan,
-            'lingkar_kepala' => $lingkar_kepala,
-            'nama_ayah' => $nama_ayah,
-            'nama_ibu' => $nama_ibu,
+            'kode_alat' => $kode,
+            'nama_posyandu' => $nama_posyandu,
+            'lokasi' => $lokasi,
+            // 'berat_badan' => $berat_badan,
+            // 'tinggi_badan' => $tinggi_badan,
+            // 'lingkar_lengan' => $lingkar_lengan,
+            // 'lingkar_kepala' => $lingkar_kepala,
+            // 'nama_ayah' => $nama_ayah,
+            // 'nama_ibu' => $nama_ibu,
         );
-        $this->M_Bayi->simpan_data('tb_anak', $data);
-        redirect('Bayi/databayi');
+        $this->M_Tani->simpan_data('tb_alat', $data);
+        redirect('Alat/dataalat');
     }
-    function databayi()
+    function dataalat()
     {
-        $data['tb_anak'] = $this->M_Bayi->tampil_data('tb_anak', 'id', 'ASC')->result();
-        $data['tbl_alat'] = $this->M_Tani->tampil_data('tb_alat', 'id_alat', 'ASC')->result();
-        $this->load->view('Page/V2/bayi/databayi', $data);
-        $this->load->view('Layout/V2/footer');
+        $data['tb_alat'] = $this->M_Tani->tampil_data('tb_alat', 'id_alat', 'ASC')->result();
+
+        $this->load->view('Alat/dataalat', $data);
+        $this->load->view('Layout2/footer');
     }
     function editbayi($id_alat)
     {
-        $where = array('id_alat' => $id_alat);
+        $where = array('id_alat' => $id_alat_alat);
         $data['tb_alat'] = $this->M_Tani->edit_data('tb_alat', $where)->result();
 
 
@@ -108,35 +108,35 @@ class DataBayi extends CI_Controller
     }
     function prosesubah()
     {
-        $id = $this->input->post('id');
+        $id_alat = $this->input->post('id_alat');
         $kode = $this->input->post('kode');
-        $nama_anak = $this->input->post('nama_anak');
-        $tanggal_lahir = $this->input->post('tanggal_lahir');
-        $berat_badan = $this->input->post('berat_badan');
-        $tinggi_badan = $this->input->post('tinggi_badan');
-        $lingkar_lengan = $this->input->post('lingkar_lengan');
-        $lingkar_kepala = $this->input->post('lingkar_kepala');
-        $nama_ayah = $this->input->post('nama_ayah');
-        $nama_ibu = $this->input->post('nama_ibu');
+        $nama_posyandu = $this->input->post('nama_posyandu');
+        $lokasi = $this->input->post('lokasi');
+        // $berat_badan = $this->input->post('berat_badan');
+        // $tinggi_badan = $this->input->post('tinggi_badan');
+        // $lingkar_lengan = $this->input->post('lingkar_lengan');
+        // $lingkar_kepala = $this->input->post('lingkar_kepala');
+        // $nama_ayah = $this->input->post('nama_ayah');
+        // $nama_ibu = $this->input->post('nama_ibu');
 
 
 
 
         $data = array(
-            'kode_anak' => $kode,
-            'nama_anak' => $nama_anak,
-            'tanggal_lahir' => $tanggal_lahir,
-            'berat_badan' => $berat_badan,
-            'tinggi_badan' => $tinggi_badan,
-            'lingkar_lengan' => $lingkar_lengan,
-            'lingkar_kepala' => $lingkar_kepala,
-            'nama_ayah' => $nama_ayah,
-            'nama_ibu' => $nama_ibu,
+            'kode_alat' => $kode,
+            'nama_posyandu' => $nama_posyandu,
+            'lokasi' => $lokasi,
+            // 'berat_badan' => $berat_badan,
+            // 'tinggi_badan' => $tinggi_badan,
+            // 'lingkar_lengan' => $lingkar_lengan,
+            // 'lingkar_kepala' => $lingkar_kepala,
+            // 'nama_ayah' => $nama_ayah,
+            // 'nama_ibu' => $nama_ibu,
         );
 
-        $where = array('id' => $id);
-        $this->M_Tani->proses_update($where, $data, 'tb_anak');
-        redirect('Bayi/databayi');
+        $where = array('id_alat' => $id_alat);
+        $this->M_Tani->proses_update($where, $data, 'tb_alat');
+        redirect('Alat/dataalat');
     }
 
     //End Alat

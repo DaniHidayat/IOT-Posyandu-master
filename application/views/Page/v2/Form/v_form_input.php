@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php $this->load->view('Layout/V2/head') ?>
+<?php $this->load->view('Layout2/head') ?>
 
 
 <body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-        <?php $this->load->view('Layout/V2/sidebar'); ?>
+        <?php $this->load->view('Layout2/sidebar'); ?>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -15,7 +15,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <?php $this->load->view('Layout/V2/navbar'); ?>
+                <?php $this->load->view('Layout2/navbar'); ?>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->

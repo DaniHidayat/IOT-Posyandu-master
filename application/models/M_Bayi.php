@@ -42,7 +42,7 @@
     {
         $this->db->from("tb_anak")->count_all_results();
     }
-    function filter_data($search = null, $limit = null, $start = null, $order_field = null, $order_ascdesc = null, $id_alat)
+    function filter_data($search = null, $limit = null, $start = null, $order_field = null, $order_ascdesc = null, $id_alat = null)
     {
 
         $this->db->select('*');
@@ -205,5 +205,17 @@
             $this->db->where($kondisi);
             $this->db->delete($nm_table);
         }
+
+    public function laporan_by_date($tgl_awal, $tgl_akhir)
+    {
+        $tgl_awal = $this->db->escape($tgl_awal);
+        $tgl_akhir = $this->db->escape($tgl_akhir);
+        $this->db->select('*');
+        $this->db->from('tb_anak');
+        $this->db->join('tb_bayi', 'tb_bayi.kode_bayi = tb_anak.kode_anak ');
+        $this->db->where('DATE(waktu) BETWEEN ' . $tgl_awal . ' AND ' . $tgl_akhir); // Tambahkan where tanggal nya
+
+        return $this->db->get()->result();
+    }
     }
 ?>

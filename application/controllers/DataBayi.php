@@ -17,13 +17,13 @@ class DataBayi extends CI_Controller
         }
         // Setup
 
-        // // $this->load->view('Layout/V2/navbar');
-        // $this->load->view('Layout/V2/sidebar');
+        // // $this->load->view('Layout2/navbar');
+        // $this->load->view('Layout2/sidebar');
     }
     function beranda()
     {
-        $this->load->view('Page/v2/DataBayi/beranda');
-        $this->load->view('Layout/v2/Bayi/footer');
+        $this->load->view('DataBayi/beranda');
+        $this->load->view('Layout2/Bayi/footer');
     }
 
     // ALAT
@@ -87,15 +87,15 @@ class DataBayi extends CI_Controller
             'nama_ayah' => $nama_ayah,
             'nama_ibu' => $nama_ibu,
         );
-        $this->M_Bayi->simpan_data('tb_bayi', $data);
+        $this->M_DATA_Bayi->simpan_data('tb_bayi', $data);
         redirect('DataBayi/databayi');
     }
     function databayi()
     {
-        $data['tb_anak'] = $this->M_DATA_Bayi->tampil_data('tb_bayi', 'id', 'ASC')->result();
+        $data['tb_anak'] = $this->M_DATA_Bayi->tampil_data('tb_bayi', 'kode_bayi', 'ASC')->result();
         $data['tbl_alat'] = $this->M_Tani->tampil_data('tb_alat', 'id_alat', 'ASC')->result();
-        $this->load->view('Page/V2/Databayi/v_data_bayi', $data);
-        $this->load->view('Layout/V2/footer');
+        $this->load->view('DataBayi/v_data_bayi', $data);
+        $this->load->view('Layout2/footer');
     }
     function editbayi($id_alat)
     {

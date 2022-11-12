@@ -75,14 +75,18 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	// 'hostname' => 'meniti.id',
-	// 'username' => 'u7753801_asepmustopa',
-	// 'password' => '4sepmust0p4',
-	// 'database' => 'u7753801_db_tantram',
+	//Dani
+	// 'hostname' => 'localhost:8889',
+	// 'username' => 'root',
+	// 'password' => 'root',
 	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => 'root',
+	'password' => '',
 	'database' => 'db_innovillage',
+	// 'hostname' => 'localhost',
+	// 'username' => 'u1606221',
+	// 'password' => 'inovasisttybsi2022',
+	// 'database' => 'u1606221_db_posyandu',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

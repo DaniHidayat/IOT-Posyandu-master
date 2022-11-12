@@ -20,8 +20,8 @@ class Mainpage extends CI_Controller {
 	public function test()
 	{
 		// Page Setup
-		$this->load->view('Layout/v2/head');
+		$this->load->view('Layout2/head');
 		$this->load->view('Page//v2/mainpage');
-		$this->load->view('Layout/v2/footer');
+		$this->load->view('Layout2/footer');
 	}			
 }

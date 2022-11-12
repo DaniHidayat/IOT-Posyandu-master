@@ -20,7 +20,7 @@
         <!-- inject:css -->
         <link rel="stylesheet" href="<?= base_url('../assets/css/vertical-layout-light/style.css')?>">
         <!-- endinject -->
-        <link rel="shortcut icon" href="<?= base_url('../assets/images/logo.png')?>" />  
+        <link rel="shortcut icon" href="<?= base_url('../assets/images/logo-KPP.png')?>" />  
         
         <link href="<?= base_url('../assets/bootstrap/LandingPage/css/bootstrap.min.css')?>" rel="stylesheet" />
 

@@ -68,7 +68,7 @@
         $this->db->from('tb_bayi ');
   
         if (!empty($search)) {
-            $this->db->like('kode_anak', $search); // Untuk 
+            $this->db->like('kode_bayi', $search); // Untuk 
             $this->db->or_like('nama_anak', $search); // Untuk menambahkan query where LIKE
         }
         // if ($id_alat !== "all") {

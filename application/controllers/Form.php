@@ -14,12 +14,12 @@
             }
             // Setup
            
-            // // $this->load->view('Layout/V2/navbar');
-            // $this->load->view('Layout/V2/sidebar');
+            // // $this->load->view('Layout2/navbar');
+            // $this->load->view('Layout2/sidebar');
         }
         public function index()
         {
         $this->load->view('Page/V2/Form/v_form_input');
-        $this->load->view('Layout/V2/footer');
+        $this->load->view('Layout2/footer');
         }
     }

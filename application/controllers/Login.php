@@ -36,10 +36,10 @@ class Login extends CI_Controller {
 			);
             $this->session->set_userdata($datalogin);
             // echo "Masuk";
-            header('location:'.base_url(). '../DataBayi/databayi');
+            header('location:'.base_url(). 'DataBayi/databayi');
         }else{
             // echo "Tidak Masuk";
-            header('location:'.base_url().'../Login');
+            header('location:'.base_url().'Login');
         }
     }
     // Halaman Alat

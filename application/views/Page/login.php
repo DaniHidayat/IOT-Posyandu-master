@@ -5,9 +5,8 @@
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-center py-5 px-4 px-sm-5">
               <div class="brand-logo">
-                <img src="<?= base_url('../assets/images/logo.png')?>" alt="logo" width="100%">
+                <img src="<?= base_url('../assets/images/logo-KPP.png')?>" alt="logo" width="100%">
               </div>
-              <h4>Hello! Petani Terampil...</h4>
               <h6 class="fw-light">Masukan akun untuk melanjutkan</h6>
               <form class="pt-3" method="post" action="<?= base_url('Login/auth'); ?>">
                 <div class="form-group">
