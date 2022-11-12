@@ -165,6 +165,17 @@
         
            
         }
+    public function cetak_laporan_excel()
+    {
+        $this->load->library('dompdf_gen');
+        $awal = $this->input->post('awal');
+        $akhir = $this->input->post('akhir');
+        $data['awal'] = $awal;
+        $data['akhir'] = $akhir;
+        $data['databayi'] = $this->M_Bayi->laporan_by_date($awal, $akhir);
+        $this->load->view('Bayi/v_laporan_bayi_excel', $data);
+       
+    }
    
 
     }
