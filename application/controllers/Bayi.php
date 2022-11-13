@@ -141,6 +141,12 @@
         $data['tb_anak'] = $this->db->query("SELECT * FROM tb_anak AS anak JOIN tb_bayi AS bayi ON anak.kode_anak = bayi.kode_bayi")->result();
 
         $data['tbl_alat'] = $this->M_Tani->tampil_data('tb_alat', 'id_alat', 'ASC')->result();
+        $filter = array(
+            'awal' => '',
+            'akhir' => '',
+
+        );
+        $this->session->set_userdata($filter);
         $this->load->view('Bayi/laporan', $data);
         $this->load->view('Layout2/footer');
         }
@@ -148,8 +154,8 @@
         public function cetak_laporan()
         {
            $this->load->library('dompdf_gen');
-           $awal = $this->input->post('awal');
-           $akhir = $this->input->post('akhir');
+           $awal = $this->session->userdata('awal');
+           $akhir = $this->session->userdata('akhir');
 
            $data['databayi'] = $this->M_Bayi->laporan_by_date($awal,$akhir);
 
@@ -167,14 +173,31 @@
         }
     public function cetak_laporan_excel()
     {
-        $this->load->library('dompdf_gen');
-        $awal = $this->input->post('awal');
-        $akhir = $this->input->post('akhir');
+      
+        $awal = $this->session->userdata('awal');
+        $akhir = $this->session->userdata('akhir');
         $data['awal'] = $awal;
         $data['akhir'] = $akhir;
         $data['databayi'] = $this->M_Bayi->laporan_by_date($awal, $akhir);
         $this->load->view('Bayi/v_laporan_bayi_excel', $data);
        
+    }
+
+    function create_session(){
+        $awal = $this->input->post('awal');
+        $akhir = $this->input->post('akhir');
+        $filter = array(
+            'awal' => $awal,
+            'akhir' => $akhir,
+           
+        );
+        $this->session->set_userdata($filter);
+        $data['tb_anak'] = $this->db->query("SELECT * FROM tb_anak AS anak JOIN tb_bayi AS bayi ON anak.kode_anak = bayi.kode_bayi")->result();
+
+        $data['tbl_alat'] = $this->M_Tani->tampil_data('tb_alat', 'id_alat', 'ASC')->result();
+        $data['button_laporan'] =  `<p>hallo</p>`;
+        $this->load->view('Bayi/laporan', $data);
+        $this->load->view('Layout2/footer');
     }
    
 

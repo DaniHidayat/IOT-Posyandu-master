@@ -33,8 +33,9 @@
 
 
                         <div class="card-body">
+                           
 
-                            <form action="<?php echo base_url('Bayi/cetak_laporan_excel'); ?>" method="POST">
+                            <form action="<?php echo base_url('Bayi/create_session'); ?>" method="POST">
                                 <div class="form-group row d-flex justify-content-center">
 
                                     <div class="col-xs-3 mr-5">
@@ -49,13 +50,25 @@
                                     </div>
                                 </div>
                                 <div class="form-group row d-flex justify-content-center">
-                                    <div class="mx-auto" >
-                                        <button type="submit" class="btn btn-primary "><i class="fa fa-print"> Cetak</i></button>
+                                    <div class="mx-auto">
+                                        <button type="submit" class="btn btn-primary "><i class="fa fa-filter"> Filter</i></button>
                                     </div>
                                     <!-- <div class="mx-auto">
                                         <button type="submit" class="btn btn-primary "><i class="fa fa-print"> Cetak</i></button>
                                     </div> -->
                                 </div>
+                                <?php if ($this->session->userdata('awal') && $this->session->userdata('akhir') !== null) : ?>
+                                    <div class="form-group row d-flex justify-content-center">
+                                        <div class="mx-auto">
+                                            <a href="<?php echo base_url('Bayi/cetak_laporan'); ?>" class="btn btn-danger" target="_blank"><i class="fa fa-file-pdf-o ">Pdf</i></a>
+                                        </div>
+                                        <div class="mx-auto">
+
+                                            <a href="<?php echo base_url('Bayi/cetak_laporan_excel'); ?>" class="btn btn-success"><i class="fa fa-file-excel-o">Excel</i></a>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+
 
 
                             </form>
@@ -69,3 +82,6 @@
             </div>
 
             <script src="<?php echo base_url('../assets/sb2/'); ?>vendor/jquery/jquery.min.js"></script>
+            <script>
+
+            </script>
