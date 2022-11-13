@@ -75,14 +75,18 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	// 'hostname' => 'localhost',
+	//Dani
+	// 'hostname' => 'localhost:8889',
 	// 'username' => 'root',
 	// 'password' => 'root',
-	// 'database' => 'db_innovillage',
 	'hostname' => 'localhost',
-	'username' => 'u1606221',
-	'password' => 'inovasisttybsi2022',
-	'database' => 'u1606221_db_posyandu',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'db_innovillage',
+	// 'hostname' => 'localhost',
+	// 'username' => 'u1606221',
+	// 'password' => 'inovasisttybsi2022',
+	// 'database' => 'u1606221_db_posyandu',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
