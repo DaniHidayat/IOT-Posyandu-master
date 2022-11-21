@@ -88,6 +88,7 @@
         function databayi(){
             $data['tb_anak'] = $this->db->query("SELECT * FROM tb_anak AS anak JOIN tb_bayi AS bayi ON anak.kode_anak = bayi.kode_bayi")->result();
 
+
             $data['tbl_alat'] = $this->M_Tani->tampil_data('tb_alat', 'id_alat', 'ASC')->result();
             $this->load->view('Bayi/databayi2',$data);
             $this->load->view('Layout2/footer');
