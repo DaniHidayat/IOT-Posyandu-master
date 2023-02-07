@@ -93,7 +93,7 @@
                                                 <td>
                                                     
                                                 <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalEdit<?php echo $ta->id_anak; ?>">Edit </a>
-												<a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalHapus<?php echo $ta->id_anak; ?>">Hapus </a>
+												<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ModalHapus<?php echo $ta->id_anak; ?>">Hapus </a>
 												</td>
 
                                             </tr>
