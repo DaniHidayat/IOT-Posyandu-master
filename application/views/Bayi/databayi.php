@@ -90,7 +90,9 @@
                                         <td><?php echo $ta->lingkar_kepala; ?></td>
                                         <td><?php echo $ta->nama_ayah; ?></td>
                                         <td><?php echo $ta->nama_ibu; ?></td>
-                                        <td><a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalEdit<?php echo $ta->id_anak; ?>">Edit </a></td>
+                                        <td>
+                                            
+                                        <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalEdit<?php echo $ta->id_anak; ?>">Edit </a></td>
                                         </tr>
 
                                     <?php endforeach; ?>

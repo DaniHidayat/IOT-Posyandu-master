@@ -141,5 +141,11 @@ class Alat extends CI_Controller
 
     //End Alat
 
-
+	function prosesHapus()
+    {
+        $id = $this->input->post('id');
+        $where = array('id_alat' => $id);
+        $this->M_Tani->hapus_data('tb_alat',$where);
+        redirect('Alat/dataalat');
+    }
 }

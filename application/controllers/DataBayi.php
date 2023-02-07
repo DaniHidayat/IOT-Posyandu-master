@@ -94,7 +94,7 @@ class DataBayi extends CI_Controller
     {
         $data['tb_anak'] = $this->M_DATA_Bayi->tampil_data('tb_bayi', 'kode_bayi', 'ASC')->result();
         $data['tbl_alat'] = $this->M_Tani->tampil_data('tb_alat', 'id_alat', 'ASC')->result();
-        $this->load->view('DataBayi/v_data_bayi', $data);
+    $this->load->view('DataBayi/v_data_bayi', $data);
         $this->load->view('Layout2/footer');
     }
     function editbayi($id_alat)
@@ -138,7 +138,13 @@ class DataBayi extends CI_Controller
         $this->M_Tani->proses_update($where, $data, 'tb_bayi');
         redirect('DataBayi/databayi');
     }
-
+    function hapus()
+    {
+        $id = $this->input->post('id');
+        $where = array('id' => $id);
+        $this->M_Tani->hapus_data('tb_bayi',$where);
+        redirect('DataBayi/databayi');
+    }
     //End Alat
 
 

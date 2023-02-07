@@ -176,6 +176,28 @@
                         </div>
                     </div>
                 </div>
+				<div class="modal fade" id="ModalHapus<?php echo $ta->id_alat; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Yakin Mau di Hapus?</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal" action="<?php echo base_url() . 'Alat/prosesHapus' ?>" method="post" enctype="multipart/form-data">
+                                  
+                                        <input type="hidden" name="id" value="<?php echo $ta->id_alat; ?> ">
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary btn-flat" id="hapus">Hapus</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <?php endforeach; ?>
             <script src="<?php echo base_url('../assets/sb2/'); ?>vendor/jquery/jquery.min.js"></script>
             <script>
@@ -236,7 +258,7 @@
                             {
                                 "data": null,
                                 "render": function(data, type, row, meta) {
-                                    data = `<a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalEdit` + data.id_alat + `">Edit </a>`;
+                                    data = `<a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalEdit` + data.id_alat + `">Edit </a> | <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ModalHapus` + data.id_alat + `">Hapus </a>`;
                                     return data;
                                 }
                             },

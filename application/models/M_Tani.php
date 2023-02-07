@@ -200,6 +200,7 @@
 
         // Menghapus Data Dari Database
         function hapus_data($nm_table, $kondisi){
+            print_r($kondisi);
             $this->db->where($kondisi);
             $this->db->delete($nm_table);
         }

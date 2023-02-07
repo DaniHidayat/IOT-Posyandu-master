@@ -90,6 +90,7 @@
 
 
             $data['tbl_alat'] = $this->M_Tani->tampil_data('tb_alat', 'id_alat', 'ASC')->result();
+			
             $this->load->view('Bayi/databayi2',$data);
             $this->load->view('Layout2/footer');
             
@@ -198,6 +199,13 @@
         $data['tbl_alat'] = $this->M_Tani->tampil_data('tb_alat', 'id_alat', 'ASC')->result();
         $this->load->view('Bayi/laporan', $data);
         $this->load->view('Layout2/footer');
+    }
+	function prosesHapus()
+    {
+        $id = $this->input->post('id_anak');
+        $where = array('id_anak' => $id);
+        $this->M_Tani->hapus_data('tb_anak',$where);
+        redirect('Bayi/databayi');
     }
    
 

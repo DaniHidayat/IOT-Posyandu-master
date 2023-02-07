@@ -90,7 +90,12 @@
                                                 <td><?php echo $ta->nama_ayah; ?></td>
                                                 <td><?php echo $ta->nama_ibu; ?></td>
                                                 <td><?php echo $ta->waktu; ?></td>
-                                                <td><a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalEdit<?php echo $ta->id_anak; ?>">Edit </a></td>
+                                                <td>
+                                                    
+                                                <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalEdit<?php echo $ta->id_anak; ?>">Edit </a>
+												<a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalHapus<?php echo $ta->id_anak; ?>">Hapus </a>
+												</td>
+
                                             </tr>
 
                                         <?php endforeach; ?>
@@ -164,6 +169,37 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary btn-flat" id="simpan">Simpan</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="ModalHapus<?php echo $ta->id_anak; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Yakin Untuk Menghapus ?</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal" action="<?php echo base_url() . 'Bayi/prosesHapus' ?>" method="post" enctype="multipart/form-data">
+                                    <div class="modal-body">
+									<input type="hidden" value="<?php echo $ta->id_anak; ?>" name="id_anak">
+                                       
+
+
+
+
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary btn-flat" id="simpan">Hapus</button>
                                     </div>
                                 </form>
                             </div>
