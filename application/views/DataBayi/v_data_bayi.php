@@ -71,7 +71,6 @@
                                         </tr>
                                     </thead>
 
-
                                 </table>
                             </div>
                         </div>
@@ -114,8 +113,8 @@
                                             <input type="date" name="tanggal_lahir" class="form-control" id="inputUserName" placeholder="Tanggal Lahir" required>
                                         </div>
                                     </div>
-                                 
-                                   
+
+
                                     <div class="form-group">
                                         <label for="inputUserName" class="col-sm-4 control-label">Nama Ayah</label>
                                         <div class="col-sm-12">
@@ -177,9 +176,9 @@
                                                 <input type="date" value="<?php echo $ta->tanggal_lahir; ?>" name="tanggal_lahir" class="form-control" id="inputUserName" placeholder="Tanggal Lahir" required>
                                             </div>
                                         </div>
-                                       
-                                        
-                                       
+
+
+
                                         <div class="form-group">
                                             <label for="inputUserName" class="col-sm-4 control-label">Nama Ayah</label>
                                             <div class="col-sm-12">
@@ -202,6 +201,28 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary btn-flat" id="simpan">Simpan</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="ModalHapus<?php echo $ta->id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Yakin Mau di Hapus?</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal" action="<?php echo base_url() . 'DataBayi/hapus' ?>" method="post" enctype="multipart/form-data">
+                                  
+                                        <input type="hidden" name="id" value="<?php echo $ta->id; ?> ">
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary btn-flat" id="hapus">Hapus</button>
                                     </div>
                                 </form>
                             </div>
@@ -275,7 +296,8 @@
                             {
                                 "data": null,
                                 "render": function(data, type, row, meta) {
-                                    data = `<a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalEdit` + data.id + `">Edit </a>`;
+                                    data = `<a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalEdit` + data.id + `">Edit </a> 
+									<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ModalHapus` + data.id + `">Hapus </a>`;
                                     return data;
                                 }
                             },
